@@ -1,0 +1,25 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    var x;
+    var remainder= (x%2);
+    var arr=[];
+    function convert(x){
+      while (x/2 !=0){
+        if (x%2==1){
+          arr.push(1);
+        }
+        else {
+          arr.push(0);
+        }
+      }
+      document.getElementById('output').value=arr;
+    }
+  </script>
+</head>
+<body>
+  <
+  <textarea id="output" rows="8" cols="80"></textarea>
+</body>
+</html>
