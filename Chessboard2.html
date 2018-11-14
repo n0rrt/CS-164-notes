@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://www.cs.drexel.edu/~tlh339/chessboard.html -->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Chessboard </title>
+
+
+  <style>
+    td{
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+    }
+  </style>
+  <script>
+    var bR= "♖";
+    var bKn= "♘";
+    var bB= "♗";
+    var bK= "♔";
+    var bQ= "♕";
+    var bP= "♙";
+    var wR= "♜";
+    var wKn= "♞";
+    var wB= "♝";
+    var wK= "♚";
+    var wQ= "♛";
+    var wP= "♟";
+    var startBPawns= document.getElementsByClassName("startBP");
+    var startWPawns= document.getElementsByClassName("startWP");
+    var pos1;
+    var pos2;
+    var pos1elem;
+    var pos2elem;
+
+    function init(){
+      document.getElementById("h1").innerHTML= bR;
+      document.getElementById("h2").innerHTML= bKn;
+      document.getElementById("h3").innerHTML= bB;
+      document.getElementById("h4").innerHTML= bQ;
+      document.getElementById("h5").innerHTML= bK;
+      document.getElementById("h6").innerHTML= bB;
+      document.getElementById("h7").innerHTML= bKn;
+      document.getElementById("h8").innerHTML= bR;
+      document.getElementById("a1").innerHTML= wR;
+      document.getElementById("a2").innerHTML= wKn;
+      document.getElementById("a3").innerHTML= wB;
+      document.getElementById("a4").innerHTML= wQ;
+      document.getElementById("a5").innerHTML= wK;
+      document.getElementById("a6").innerHTML= wB;
+      document.getElementById("a7").innerHTML= wKn;
+      document.getElementById("a8").innerHTML= wR;
+      for (x=0; x<8; x++){
+        startBPawns[x].innerHTML= bP;
+        startWPawns[x].innerHTML= wP;
+      }
+    }
+    function move(){
+      var input= document.getElementById("in").value;
+      if (input.length==4){
+        pos1= input.substring(0,2);
+        pos2= input.substring(2);
+        pos1elem= document.getElementById(pos1);
+        pos2elem= document.getElementById(pos2);
+        pos2elem.innerHTML= pos1elem.innerHTML;
+        pos1elem.innerHTML= null;
+      }
+      else{
+        input.value= "Please enter a valid move";
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <table>
+    <tbody><tr>
+      <td bgcolor="#FF00B5" id="h1"></td>
+      <td bgcolor="#00FF12" id="h2"></td>
+      <td bgcolor="#FF00B5" id="h3"></td>
+      <td bgcolor="#00FF12" id="h4"></td>
+      <td bgcolor="#FF00B5" id="h5"></td>
+      <td bgcolor="#00FF12" id="h6"></td>
+      <td bgcolor="#FF00B5" id="h7"></td>
+      <td bgcolor="#00FF12" id="h8"></td>
+    </tr>
+    <tr>
+      <td bgcolor="#00FF12" id="g1" class="startBP"></td>
+      <td bgcolor="#FF00B5" id="g2" class="startBP"></td>
+      <td bgcolor="#00FF12" id="g3" class="startBP"></td>
+      <td bgcolor="#FF00B5" id="g4" class="startBP"></td>
+      <td bgcolor="#00FF12" id="g5" class="startBP"></td>
+      <td bgcolor="#FF00B5" id="g6" class="startBP"></td>
+      <td bgcolor="#00FF12" id="g7" class="startBP"></td>
+      <td bgcolor="#FF00B5" id="g8" class="startBP"></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FF00B5" id="f1"></td>
+      <td bgcolor="#00FF12" id="f2"></td>
+      <td bgcolor="#FF00B5" id="f3"></td>
+      <td bgcolor="#00FF12" id="f4"></td>
+      <td bgcolor="#FF00B5" id="f5"></td>
+      <td bgcolor="#00FF12" id="f6"></td>
+      <td bgcolor="#FF00B5" id="f7"></td>
+      <td bgcolor="#00FF12" id="f8"></td>
+    </tr>
+    <tr>
+      <td bgcolor="#00FF12" id="e1"></td>
+      <td bgcolor="#FF00B5" id="e2"></td>
+      <td bgcolor="#00FF12" id="e3"></td>
+      <td bgcolor="#FF00B5" id="e4"></td>
+      <td bgcolor="#00FF12" id="e5"></td>
+      <td bgcolor="#FF00B5" id="e6"></td>
+      <td bgcolor="#00FF12" id="e7"></td>
+      <td bgcolor="#FF00B5" id="e8"></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FF00B5" id="d1"></td>
+      <td bgcolor="#00FF12" id="d2"></td>
+      <td bgcolor="#FF00B5" id="d3"></td>
+      <td bgcolor="#00FF12" id="d4"></td>
+      <td bgcolor="#FF00B5" id="d5"></td>
+      <td bgcolor="#00FF12" id="d6"></td>
+      <td bgcolor="#FF00B5"id="d7"></td>
+      <td bgcolor="#00FF12" id="d8"></td>
+    </tr>
+    <tr>
+      <td bgcolor="#00FF12" id="c1"></td>
+      <td bgcolor="#FF00B5" id="c2"></td>
+      <td bgcolor="#00FF12" id="c3"></td>
+      <td bgcolor="#FF00B5" id="c4"></td>
+      <td bgcolor="#00FF12" id="c5"></td>
+      <td bgcolor="#FF00B5" id="c6"></td>
+      <td bgcolor="#00FF12" id="c7"></td>
+      <td bgcolor="#FF00B5" id="c8"></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FF00B5" id="b1" class="startWP"></td>
+      <td bgcolor="#00FF12" id="b2" class="startWP"></td>
+      <td bgcolor="#FF00B5" id="b3" class="startWP"></td>
+      <td bgcolor="#00FF12" id="b4" class="startWP"></td>
+      <td bgcolor="#FF00B5" id="b5" class="startWP"></td>
+      <td bgcolor="#00FF12" id="b6" class="startWP"></td>
+      <td bgcolor="#FF00B5" id="b7" class="startWP"></td>
+      <td bgcolor="#00FF12" id="b8" class="startWP"></td>
+    </tr>
+    <tr>
+      <td bgcolor="#00FF12" id="a1"></td>
+      <td bgcolor="#FF00B5" id="a2"></td>
+      <td bgcolor="#00FF12" id="a3"></td>
+      <td bgcolor="#FF00B5" id="a4"></td>
+      <td bgcolor="#00FF12" id="a5"></td>
+      <td bgcolor="#FF00B5" id="a6"></td>
+      <td bgcolor="#00FF12" id="a7"></td>
+      <td bgcolor="#FF00B5" id="a8"></td>
+    </tr>
+  </tbody></table>
+  <script>init();</script>
+  <textarea id="in"></textarea>
+  <button type="button" onclick="move()">Enter</button>
+
+</body>
+</html>
