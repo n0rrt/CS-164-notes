@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Game of Life</title>
+  <script>
+    var alive;
+
+    function init(){ //initializes the table of cells
+      document.writeln('<table>');
+      for (x=0; x<50; x++){
+        document.writeln("<tr>");
+        for (y=0; y<50; y++){
+          document.writeln("<td class='cells' onclick='change(this)'></td>");
+        }
+        document.writeln("</tr>");
+      }
+      document.writeln('</table>');
+      for (z=0; z<2500; z++){
+        document.getElementsByClassName('cells')[z].setAttribute("id", (z%50).toString()+':'+Math.floor(z/50).toString());
+        document.getElementsByClassName('cells')[z].style.backgroundColor="grey";
+      }
+    }
+    function isAlive(value){
+      var location= getLocation(value);
+      var elem= document.getElementById(location);
+      if(elem.style.backgroundColor=='grey'){
+        return false;
+      }
+      else{
+        return true;
+      }
+    }
+    function change(value){
+      var location= getLocation(value);
+      var elem= document.getElementById(location);
+      if (!isAlive(elem)){
+        value.style.backgroundColor="violet";
+      }
+      else{
+        value.style.backgroundColor="grey";
+      }
+    }
+    function neighbors(value){
+      var location= getLocation(value);
+      var elem= document.getElementById(location);
+      
+    }
+    function getLocation(value){
+      var xVal= value.id.substring(0, value.id.indexOf(':'));
+      var yVal= value.id.substring(value.id.indexOf(':')+1);
+      return (xVal+':'+yVal);
+    }
+
+  </script>
+  <style>
+    td {
+      bgcolor: grey;
+      height: 10px;
+      width: 10px;
+    }
+  </style>
+</head>
+<body>
+  <script>init(); </script>
+</body>
+</html>
