@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252"><meta name="viewport" content="width=device-width"><title>https://www.cs.drexel.edu/~tlh339/virtualPet.html</title><link rel="stylesheet" type="text/css" href="virtualPet_files/viewsource.css"></head><body id="viewsource" class="highlight" style="-moz-tab-size: 4" contextmenu="actions"><pre id="line1"><span></span><span class="error comment" title="Bogus comment.">&lt;!&lt;!DOCTYPE html&gt;</span><span>
+<span id="line2"></span></span><span class="error" title="Start tag seen without seeing a doctype first. Expected “&lt;!DOCTYPE html&gt;”.">&lt;<span class="start-tag">html</span>&gt;</span><span>
+<span id="line3"></span></span><span>&lt;<span class="start-tag">head</span>&gt;</span><span>
+<span id="line4"></span>  </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>Gudetama Virtual Pet</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line5"></span>  </span><span>&lt;<span class="start-tag">style</span>&gt;</span><span>
+<span id="line6"></span>    img {
+<span id="line7"></span>      width: 500px;
+<span id="line8"></span>      height: 500px;
+<span id="line9"></span>      transform: translate(90%, 40%);
+<span id="line10"></span>    }
+<span id="line11"></span>    div {
+<span id="line12"></span>      margin-left: 40%;
+<span id="line13"></span>      display: block;
+<span id="line14"></span>    }
+<span id="line15"></span>    button {
+<span id="line16"></span>      margin: auto;
+<span id="line17"></span>      text-align: center;
+<span id="line18"></span>    }
+<span id="line19"></span>  </span><span>&lt;/<span class="end-tag">style</span>&gt;</span><span>
+<span id="line20"></span></span><span>&lt;/<span class="end-tag">head</span>&gt;</span><span>
+<span id="line21"></span></span><span>&lt;<span class="start-tag">body</span>&gt;</span><span>
+<span id="line22"></span>  </span><span>&lt;<span class="start-tag">script</span>&gt;</span><span>
+<span id="line23"></span>    var isSleep= false;
+<span id="line24"></span>    var tiredness= 0;
+<span id="line25"></span>    var food=0;
+<span id="line26"></span>    var temp;
+<span id="line27"></span>    function sleep(){
+<span id="line28"></span>      if (!isSleep){
+<span id="line29"></span>        document.getElementById('image').src=('gudetama_sleep.jpg');
+<span id="line30"></span>        tiredness=0;
+<span id="line31"></span>        food=0;
+<span id="line32"></span>        isSleep=true;
+<span id="line33"></span>      }
+<span id="line34"></span>    }
+<span id="line35"></span>    function play(){
+<span id="line36"></span>      if (!isSleep){
+<span id="line37"></span>        document.getElementById('image').src=('gudetama_happy.jpg');
+<span id="line38"></span>        tiredness++;
+<span id="line39"></span>        console.log(tiredness);
+<span id="line40"></span>        if (tiredness &gt; 2){
+<span id="line41"></span>          document.getElementById('image').src=('gudetama_tired.jpg');
+<span id="line42"></span>          setTimeout(function(){setSrc('gudetama_sit.png');}, 2000);
+<span id="line43"></span>        }
+<span id="line44"></span>        if(tiredness &gt; 4){
+<span id="line45"></span>          document.getElementById('image').src=('gudetama_tired1.png');
+<span id="line46"></span>          setTimeout(function(){sleep();}, 2000);
+<span id="line47"></span>        }
+<span id="line48"></span>      }
+<span id="line49"></span>    }
+<span id="line50"></span>    function feed(){
+<span id="line51"></span>      if (!isSleep){
+<span id="line52"></span>        document.getElementById('image').src=('gudetama_happy.jpg');
+<span id="line53"></span>        food++;
+<span id="line54"></span>        if (food &gt;3)
+<span id="line55"></span>          document.getElementById('image').src=('gudetama_sick.jpg');
+<span id="line56"></span>        }
+<span id="line57"></span>      }
+<span id="line58"></span>    function wake(){
+<span id="line59"></span>      if (isSleep){
+<span id="line60"></span>        document.getElementById('image').src=('gudetama_wake.jpg');
+<span id="line61"></span>        console.log(document.getElementById('image').src);
+<span id="line62"></span>        temp=  setTimeout(function(){setSrc('gudetama_up.png');}, 2000);
+<span id="line63"></span>        isSleep=false;
+<span id="line64"></span>      }
+<span id="line65"></span>
+<span id="line66"></span>    }
+<span id="line67"></span>    function setSrc(value){
+<span id="line68"></span>      document.getElementById('image').src=(value);
+<span id="line69"></span>    }
+<span id="line70"></span>  </span><span>&lt;/<span class="end-tag">script</span>&gt;</span><span>
+<span id="line71"></span>  </span><span>&lt;<span class="start-tag">div</span>&gt;</span><span>
+<span id="line72"></span>    </span><span>&lt;<span class="start-tag">button</span> <span class="attribute-name">onclick</span>="<a class="attribute-value">sleep()</a>"&gt;</span><span>Sleep</span><span>&lt;/<span class="end-tag">button</span>&gt;</span><span>
+<span id="line73"></span>    </span><span>&lt;<span class="start-tag">button</span> <span class="attribute-name">onclick</span>="<a class="attribute-value">wake()</a>"&gt;</span><span>Wake Up</span><span>&lt;/<span class="end-tag">button</span>&gt;</span><span>
+<span id="line74"></span>    </span><span>&lt;<span class="start-tag">button</span> <span class="attribute-name">onclick</span>="<a class="attribute-value">feed()</a>"&gt;</span><span>Feed</span><span>&lt;/<span class="end-tag">button</span>&gt;</span><span>
+<span id="line75"></span>    </span><span>&lt;<span class="start-tag">button</span> <span class="attribute-name">onclick</span>="<a class="attribute-value">play()</a>"&gt;</span><span>Play</span><span>&lt;/<span class="end-tag">button</span>&gt;</span><span>
+<span id="line76"></span>  </span><span>&lt;/<span class="end-tag">div</span>&gt;</span><span>
+<span id="line77"></span>  </span><span>&lt;<span class="start-tag">img</span> <span class="attribute-name">id</span>='<a class="attribute-value">image</a>' <span class="attribute-name">src</span>='<a class="attribute-value" href="view-source:https://www.cs.drexel.edu/~tlh339/gudetama_up.png">gudetama_up.png</a>'&gt;</span><span>
+<span id="line78"></span></span><span>&lt;/<span class="end-tag">body</span>&gt;</span><span>
+<span id="line79"></span></span><span>&lt;/<span class="end-tag">html</span>&gt;</span><span>
+<span id="line80"></span></span></pre><menu type="context" id="actions"><menuitem id="goToLine" label="Go to Line…" accesskey="L"></menuitem><menuitem id="wrapLongLines" label="Wrap Long Lines" type="checkbox"></menuitem><menuitem id="highlightSyntax" label="Syntax Highlighting" type="checkbox" checked="true"></menuitem></menu></body></html>
