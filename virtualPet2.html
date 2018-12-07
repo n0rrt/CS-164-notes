@@ -1,0 +1,183 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+  <title>CS-164 Final Project</title>
+  <style>
+    img {
+      width: 500px;
+      height: 500px;
+      transform: translate(125%, 40%);
+    }
+    div {
+      margin-left: 40%;
+      display: block;
+    }
+    button {
+      margin: auto;
+      text-align: center;
+  </style>
+</head>
+<body>
+  <script>
+
+
+    var hunger= 1;
+    var tiredness= 0;
+    var hungerDecay;
+    var x;
+
+    var currentState= 'happy';
+    var newState;
+
+    function play(){
+      switch (currentState){
+        case 'happy':
+          if (tiredness < 3){
+            newState='happy';
+            tiredness++;
+          }
+          else
+            newState='tired';
+          break;
+        case 'tired':
+          newState='sleep';
+          break;
+        case 'sick':
+          newState='angry';
+          break;
+        case 'bored':
+          newState='happy';
+          break;
+        case 'angry':
+          newState='happy';
+          break;
+        default:
+          newState=currentState;
+          break;
+      }
+      currentState=newState;
+      console.log("Play "+ currentState);
+      clearTimeout(x);
+      run();
+    }
+    function feed(){
+      switch (currentState){
+        case 'happy':
+          newState='sick';
+          break;
+        case 'hungry':
+          hunger--;
+          if (hunger > 2)
+            newState='hungry';
+          else
+            newState='happy';
+          break;
+        case 'bored':
+          newState='angry';
+          break;
+        case 'angry':
+          newState='happy';
+          break;
+        default:
+          newState=currentState;
+      }
+      currentState=newState;
+      clearTimeout(x);
+      run();
+    }
+    function sleep(){
+      if (currentState=='happy')
+        newState='angry';
+      else
+        newState='sleep';
+      currentState=newState;
+      console.log("Sleep " + currentState)
+      x=setTimeout(run, 3000);
+    }
+    function cuddle(){
+      if (currentState=='happy')
+        newState='tired';
+      else if (currentState != 'sick')
+        newState='happy';
+      else
+        newState=currentState;
+      currentState=newState;
+      console.log("Cuddle " +currentState);
+      x= setTimeout(run, 3000);
+    }
+    function hungerDecay(){
+      hunger++;
+      console.log(hunger);
+    }
+    function temp2(){
+      currentState='happy'
+      console.log("Temp2 "+ currentState);
+      x=setTimeout(run, 3000);
+    }
+    function temp3(){
+      currentState='angry';
+      x=setTimeout(run, 3000);
+    }
+    function run(){
+      switch (currentState) {
+          case 'happy':
+            document.getElementById('image').src=('gudetama_happy.jpg');
+            hungerDecay();
+            if (Math.random() > 0.5)
+              curentState='bored';
+            if (hunger < 0)
+              currentState='hungry';
+            document.getElementById('status').innerHTML=("Gudetama is happy");
+            break;
+          case 'hungry':
+            document.getElementById('image').src=('gudetama_down.jpg');
+            document.getElementById('status').innerHTML=("Gudetama is hungry");
+            break;
+          case 'tired':
+            if (Math.random() > 0.5)
+              document.getElementById('image').src=('gudetama_tired.jpg');
+            else
+              document.getElementById('image').src=('gudetame_tired1.png');
+            sleep();
+            document.getElementById('status').innerHTML=("Gudetama is tired");
+            break;
+          case 'sick':
+            document.getElementById('image').src=('gudetama_sick.jpg');
+            document.getElementById('status').innerHTML=("Gudetama is sick");
+            break;
+          case 'bored':
+            document.getElementById('image').src=('gudetama_down.jpg');
+            document.getElementById('status').innerHTML=("Gudetama is bored");
+            temp3();
+            break;
+          case 'angry':
+            document.getElementById('image').src=('gudetama_angry.png');
+            document.getElementById('status').innerHTML=("Gudetama is angry");
+            break;
+          case 'sleep':
+            document.getElementById('image').src=('gudetama_sleep.jpg');
+            temp2();
+            document.getElementById('status').innerHTML=("Gudetama is sleeping");
+            break;
+      }
+      if (hunger<=-2){
+        currentState='sick';
+        hunger=1;
+      }
+    }
+
+    console.log(currentState);
+  </script>
+  <div>
+    <button onclick="play()">Play</button>
+    <button onclick="feed()">Feed</button>
+    <button onclick="sleep()">Sleep</button>
+    <button onclick="cuddle()">Cuddle</button>
+  </div>
+  <h3 id='status'></h3>
+  <img id='image' src='gudetama_up.png'>
+  <script>
+    run();
+  </script>
+</body>
+</html>
